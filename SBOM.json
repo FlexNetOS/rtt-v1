@@ -1,0 +1,132 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.4",
+  "version": 1,
+  "serialNumber": "urn:uuid:rtt-v1-2025-10-27",
+  "metadata": {
+    "timestamp": "2025-10-27T13:10:00Z",
+    "component": {
+      "type": "application",
+      "bom-ref": "rtt-v1",
+      "name": "RTT",
+      "version": "1.0.0",
+      "description": "Relay Terminal Tool - Multi-Agent Connection Fabric with Content-Addressed Storage and Deterministic Routing",
+      "licenses": [
+        {
+          "license": {
+            "name": "Proprietary"
+          }
+        }
+      ]
+    },
+    "manufacture": {
+      "name": "FlexNetOS",
+      "url": ["https://github.com/FlexNetOS/rtt-v1"]
+    }
+  },
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "rtt_dropin-1.0",
+      "name": "rtt_dropin",
+      "version": "1.0",
+      "description": "Foundation layer: .rtt structure, panel.yaml, policy.json, routes.json, manifests, schemas"
+    },
+    {
+      "type": "library",
+      "bom-ref": "cas_vfs_starter-1.0",
+      "name": "cas_vfs_starter",
+      "version": "1.0",
+      "description": "Content-Addressed Storage registry, view engine, pack/unpack, CAS tools"
+    },
+    {
+      "type": "library",
+      "bom-ref": "rtt_signed_plans_starter-1.0",
+      "name": "rtt_signed_plans_starter",
+      "version": "1.0",
+      "description": "Ed25519 signing infrastructure, plan signing/verification, key management"
+    },
+    {
+      "type": "library",
+      "bom-ref": "rtt_solver_constraints-1.0",
+      "name": "rtt_solver_constraints",
+      "version": "1.0",
+      "description": "Constraint solver with QoS awareness, semantic versioning, policy matching"
+    },
+    {
+      "type": "library",
+      "bom-ref": "rtt_placement_churn-1.0",
+      "name": "rtt_placement_churn",
+      "version": "1.0",
+      "description": "NUMA-aware placement optimizer with churn minimization"
+    },
+    {
+      "type": "library",
+      "bom-ref": "rtt_exact_admission-1.0",
+      "name": "rtt_exact_admission",
+      "version": "1.0",
+      "description": "Integer Linear Programming solver for exact admission control"
+    },
+    {
+      "type": "library",
+      "bom-ref": "rtt_elite_addon-1.0",
+      "name": "rtt_elite_addon",
+      "version": "1.0",
+      "description": "Zero-config automation pipeline (00-50), agent bus, chaos engineering, CUE schemas, systemd service"
+    },
+    {
+      "type": "library",
+      "bom-ref": "rtt_mcp_ingest_signed_plans-1.0",
+      "name": "rtt_mcp_ingest_signed_plans",
+      "version": "1.0",
+      "description": "Model Context Protocol integration, MCP tool ingestion, agent/skill registration, invariants checking"
+    },
+    {
+      "type": "library",
+      "bom-ref": "rtt_next_upgrades-1.0",
+      "name": "rtt_next_upgrades",
+      "version": "1.0",
+      "description": "Production components: native drivers (Rust/Go/Node/Python), shared memory fabric, native planner, native signers, ViewFS FUSE"
+    },
+    {
+      "type": "library",
+      "bom-ref": "universal_stubs-1.0",
+      "name": "universal_stubs",
+      "version": "1.0",
+      "description": "Multi-language connector stubs for 73 programming languages"
+    },
+    {
+      "type": "library",
+      "bom-ref": "rtt_mcp_dropin-1.0",
+      "name": "rtt_mcp_dropin",
+      "version": "1.0",
+      "description": "MCP-to-RTT bridge, multi-provider support (claude, openai, mistral), provider management"
+    },
+    {
+      "type": "library",
+      "bom-ref": "mcp_opt_shims_bundle-1.0",
+      "name": "mcp_opt_shims_bundle",
+      "version": "1.0",
+      "description": "Optimization shims, Kubernetes Gatekeeper Helm chart, policy enforcement, execution compatibility layer"
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "rtt-v1",
+      "dependsOn": [
+        "rtt_dropin-1.0",
+        "cas_vfs_starter-1.0",
+        "rtt_signed_plans_starter-1.0",
+        "rtt_solver_constraints-1.0",
+        "rtt_placement_churn-1.0",
+        "rtt_exact_admission-1.0",
+        "rtt_elite_addon-1.0",
+        "rtt_mcp_ingest_signed_plans-1.0",
+        "rtt_next_upgrades-1.0",
+        "universal_stubs-1.0",
+        "rtt_mcp_dropin-1.0",
+        "mcp_opt_shims_bundle-1.0"
+      ]
+    }
+  ]
+}
