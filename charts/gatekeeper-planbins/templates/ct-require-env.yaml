@@ -1,0 +1,27 @@
+apiVersion: templates.gatekeeper.sh/v1
+kind: ConstraintTemplate
+metadata: { name: k8srequireenv }
+spec:
+  crd:
+    spec:
+      names: { kind: K8sRequireEnv }
+      validation: { openAPIV3Schema: { properties: { env: { type: array, items: { type: string } } } } }
+  targets:
+  - target: admission.k8s.gatekeeper.sh
+    rego: |
+      package k8srequireenv
+      violation[{"msg": msg}] {
+        input.review.kind.kind == "Deployment"
+        required := {e | e := input.parameters.env[_]}
+        not all_present(required, input.review.object.spec.template.spec.containers)
+        msg := sprintf("missing required env: %v", [required])
+      }
+      all_present(required, containers) {
+        not missing(required, containers)
+      }
+      missing(required, containers) {
+        r := required[_]
+        c := containers[_]
+        not has_env(c.env, r)
+      }
+      has_env(env, key) { some i; env[i].name == key }

@@ -1,0 +1,12 @@
+mcp:
+  providers:
+    claude:
+      control_socket:
+        unix: "./providers/claude/.claude/mcp.sock"
+        npipe: "\\\\.\\pipe\\mcp-claude"
+      tools_manifest: "./providers/claude/.claude/tools.json"   # optional
+    openai:
+      control_socket:
+        unix: "./providers/openai/.openai/mcp.sock"
+        npipe: "\\\\.\\pipe\\mcp-openai"
+      tools_manifest: "./providers/openai/.openai/tools.json"

@@ -1,0 +1,7 @@
+providers:
+  claude:
+    agent_target: "providers/claude/.claude/agents"
+  openai:
+    agent_target: "providers/openai/.openai/agents"
+  mistral:
+    agent_target: "providers/mistral/.mistral/agents"

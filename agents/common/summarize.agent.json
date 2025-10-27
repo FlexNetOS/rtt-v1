@@ -1,7 +1,6 @@
 {
   "$schema": "https://rtt/agent-manifest/v1",
   "id": "summarize",
-  "version": "1.0.0",
   "name": "Summarize",
   "desc": "Summarize text or documents.",
   "io": {

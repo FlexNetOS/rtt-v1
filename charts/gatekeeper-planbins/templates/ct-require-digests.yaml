@@ -1,0 +1,32 @@
+apiVersion: templates.gatekeeper.sh/v1
+kind: ConstraintTemplate
+metadata: { name: k8srequiredigests }
+spec:
+  crd:
+    spec:
+      names: { kind: K8sRequireDigests }
+      validation:
+        openAPIV3Schema:
+          properties:
+            annotation: { type: string }
+  targets:
+  - target: admission.k8s.gatekeeper.sh
+    rego: |
+      package k8srequiredigests
+      violation[{"msg": msg}] {
+        input.review.kind.kind == "Deployment"
+        key := input.parameters.annotation
+        ann := input.review.object.metadata.annotations[key]
+        ann == ""
+        msg := sprintf("required annotation %v missing", [key])
+      }
+      violation[{"msg": msg}] {
+        input.review.kind.kind == "Deployment"
+        key := input.parameters.annotation
+        ann := input.review.object.metadata.annotations[key]
+        not valid(ann)
+        msg := sprintf("annotation %v must contain one or more sha256 digests", [key])
+      }
+      valid(ann) {
+        re_match("([a-f0-9]{64})(,\s*[a-f0-9]{64})*", ann)
+      }

@@ -1,0 +1,23 @@
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sRequireEnv
+metadata: { name: require-plan-env }
+spec:
+  match: { kinds: [ { apiGroups: ["apps"], kinds: ["Deployment"] } ] }
+  parameters: { env: {{ toYaml .Values.requiredEnv | nindent 8 }} }
+---
+{{- if .Values.forbidCurrentOpt }}
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sForbidCurrentOpt
+metadata: { name: forbid-current-opt }
+spec:
+  match: { kinds: [ { apiGroups: ["apps"], kinds: ["Deployment"] } ] }
+{{- end }}
+---
+{{- if .Values.requireDigestsAnnotation }}
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sRequireDigests
+metadata: { name: require-opt-digests }
+spec:
+  match: { kinds: [ { apiGroups: ["apps"], kinds: ["Deployment"] } ] }
+  parameters: { annotation: "rtt.opt/digests" }
+{{- end }}

@@ -1,7 +1,6 @@
 {
   "$schema": "https://rtt/agent-manifest/v1",
   "id": "code_fix",
-  "version": "1.0.0",
   "name": "CodeFix",
   "desc": "Propose diffs for code issues.",
   "io": {

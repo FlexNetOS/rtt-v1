@@ -1,0 +1,5 @@
+requiredEnv:
+  - PLAN_BIN_DIR
+  - MCP_PLAN_BIN
+forbidCurrentOpt: true
+requireDigestsAnnotation: true

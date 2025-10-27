@@ -1,0 +1,39 @@
+#!/bin/sh
+# mcp-shim: resolve tool to /opt/mcp/<pkg>@<digest>/bin/<tool> without global installs.
+set -eu
+TOOL="$(basename "$0")"
+ENVVAR="MCP_TOOL_BIN_$(printf "%s" "$TOOL" | tr '[:lower:]-' '[:upper:]_')"
+OVERRIDE_PATH="$(eval "printf '%s' "\${$ENVVAR-}"")"
+if [ -n "${OVERRIDE_PATH:-}" ] && [ -x "$OVERRIDE_PATH" ]; then
+  exec -a "$TOOL" "$OVERRIDE_PATH" "$@"
+fi
+if [ -n "${MCP_PLAN_BIN-}" ]; then
+  OLD_IFS="$IFS"; IFS=":"
+  for d in $MCP_PLAN_BIN; do
+    IFS="$OLD_IFS"
+    CAND="$d/$TOOL"
+    if [ -x "$CAND" ]; then
+      if [ "${MCP_VERIFY_DIGEST-0}" = "1" ]; then
+        case "$CAND" in
+          /opt/mcp/*@sha256:*/bin/*) : ;;
+          *) echo "mcp-shim: candidate not digest-pinned: $CAND" >&2; exit 42 ;;
+        esac
+      fi
+      exec -a "$TOOL" "$CAND" "$@"
+    fi
+  done
+  IFS="$OLD_IFS"
+fi
+ALIAS="$HOME/.mcp/aliases.d/$TOOL"
+if [ -x "$ALIAS" ]; then
+  exec -a "$TOOL" "$ALIAS" "$@"
+fi
+CAND="/opt/mcp/current/$TOOL/bin/$TOOL"
+if [ -x "$CAND" ]; then
+  if [ "${MCP_VERIFY_DIGEST-0}" = "1" ]; then
+    echo "mcp-shim: /opt/mcp/current is forbidden in prod" >&2; exit 43
+  fi
+  exec -a "$TOOL" "$CAND" "$@"
+fi
+echo "mcp-shim: unable to resolve $TOOL. Set MCP_PLAN_BIN or MCP_TOOL_BIN_$TOOL." >&2
+exit 127

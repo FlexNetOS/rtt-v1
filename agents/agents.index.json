@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "canonical_dir": "agents/common",
+  "agents": [
+    {
+      "id": "summarize",
+      "path": "agents/common/summarize.agent.json"
+    },
+    {
+      "id": "search",
+      "path": "agents/common/search.agent.json"
+    },
+    {
+      "id": "code_fix",
+      "path": "agents/common/code_fix.agent.json"
+    }
+  ]
+}
