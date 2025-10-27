@@ -1,0 +1,8 @@
+- name: kill_driver
+  action: SIGKILL
+  target: connector:http
+  window: {start_ms: 500, dur_ms: 1000}
+- name: slow_consumer
+  action: sleep
+  target: route:rtt://core/bus/events->logger
+  latency_ms: 50

@@ -1,0 +1,27 @@
+{
+  "sqlite": {
+    "type": "embedded",
+    "driver": "python:sqlite3",
+    "symbol": "rtt://db/sqlite"
+  },
+  "postgres": {
+    "type": "tcp",
+    "driver": "psycopg",
+    "symbol": "rtt://db/postgres"
+  },
+  "neo4j": {
+    "type": "tcp",
+    "driver": "neo4j",
+    "symbol": "rtt://db/neo4j"
+  },
+  "redis": {
+    "type": "tcp",
+    "driver": "redis",
+    "symbol": "rtt://cache/redis"
+  },
+  "qdrant": {
+    "type": "tcp",
+    "driver": "qdrant",
+    "symbol": "rtt://vec/qdrant"
+  }
+}

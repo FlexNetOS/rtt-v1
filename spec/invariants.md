@@ -1,0 +1,5 @@
+- Unique active link per `(from, class!=bus)`
+- ObservedGraph == DesiredGraph after apply, else rollback
+- p99 latency < budget over 10s window or breaker trips
+- WAL merkle chain valid
+- Version/capability meets non-empty

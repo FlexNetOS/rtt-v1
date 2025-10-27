@@ -1,0 +1,11 @@
+[Unit]
+Description=RTT Panel
+After=network.target
+[Service]
+Type=simple
+WorkingDirectory=%h/%i
+ExecStart=%h/%i/.rtt/bin/rtt-panel
+Restart=always
+RestartSec=2
+[Install]
+WantedBy=default.target

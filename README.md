@@ -1,2 +1,2 @@
-# rtt-v1
-Relay Terminal Tool (RTT)
+# RTT Elite Add‑On
+Zero‑config automation to extend the `.rtt` scaffold to a production‑grade system.
