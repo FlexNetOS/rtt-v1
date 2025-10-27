@@ -1,0 +1,1 @@
+program Connector; begin writeln('{"id":"0","result":{"ok":true},"error":null}'); end.

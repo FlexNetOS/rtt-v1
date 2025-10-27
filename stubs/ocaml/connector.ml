@@ -1,0 +1,1 @@
+print_endline "{\"id\":\"0\",\"result\":{\"ok\":true},\"error\":null}";;
