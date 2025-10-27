@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import sys, base64, json, subprocess, shutil
+import sys, base64, subprocess, shutil
 def sign(priv_b64: str, msg: bytes) -> str:
     try:
         from nacl.signing import SigningKey
@@ -7,11 +7,9 @@ def sign(priv_b64: str, msg: bytes) -> str:
         sig = sk.sign(msg).signature
         return base64.b64encode(sig).decode()
     except Exception:
-        # fallback: external rtt-sign tool in PATH
         exe = shutil.which("rtt-sign")
-        if not exe:
-            raise SystemExit("No nacl available and rtt-sign not found in PATH")
-        import tempfile, os
+        if not exe: raise SystemExit("No nacl and no rtt-sign CLI")
+        import tempfile
         with tempfile.NamedTemporaryFile(delete=False) as tf:
             tf.write(msg); tf.flush()
             out = subprocess.check_output([exe, "sign", priv_b64, tf.name])
@@ -24,9 +22,8 @@ def verify(pub_b64: str, msg: bytes, sig_b64: str) -> bool:
         return True
     except Exception:
         exe = shutil.which("rtt-sign")
-        if not exe:
-            return False
-        import tempfile, os
+        if not exe: return False
+        import tempfile, subprocess
         with tempfile.NamedTemporaryFile(delete=False) as tf:
             tf.write(msg); tf.flush()
             try:

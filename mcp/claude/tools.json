@@ -1,0 +1,18 @@
+{
+  "tools": [
+    {
+      "name": "summarize",
+      "version": "1.0.0",
+      "capabilities": [
+        "summarize"
+      ]
+    },
+    {
+      "name": "search",
+      "version": "1.0.0",
+      "capabilities": [
+        "search"
+      ]
+    }
+  ]
+}

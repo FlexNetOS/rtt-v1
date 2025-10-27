@@ -1,0 +1,6 @@
+{
+  "id": "summarization",
+  "provides": [
+    "summarize"
+  ]
+}
