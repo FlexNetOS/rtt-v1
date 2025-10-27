@@ -1,0 +1,9 @@
+{
+  "name": "rtt-monorepo",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "drivers/node/connector-file"
+  ],
+  "engines": { "node": ">=20" }
+}

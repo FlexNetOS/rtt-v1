@@ -1,0 +1,7 @@
+{
+  "name": "connector-file",
+  "version": "0.1.0",
+  "bin": { "connector-file": "index.js" },
+  "type": "module",
+  "dependencies": {}
+}

@@ -1,0 +1,15 @@
+[package]
+name = "rtt-viewfs"
+version = "0.1.0"
+edition = "2021"
+authors = ["you"]
+description = "CAS-backed provider view filesystem (FUSE)"
+
+[dependencies]
+fuse3 = "0.6"
+tokio = { version = "1", features = ["full"] }
+bytes = "1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+anyhow = "1"
+thiserror = "1"
