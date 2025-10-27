@@ -1,0 +1,21 @@
+{
+  "plan_id": "sha256-EXAMPLE",
+  "routes_add": [
+    {
+      "from": "rtt://agent/api/summarize@1.0.0",
+      "to": "rtt://mcp/claude/tool/summarize@1.0.0",
+      "lane": "shm"
+    },
+    {
+      "from": "rtt://agent/api/search@1.0.0",
+      "to": "rtt://mcp/claude/tool/search@1.0.0",
+      "lane": "uds"
+    }
+  ],
+  "placement": {
+    "rtt://agent/api/summarize@1.0.0": "0",
+    "rtt://mcp/claude/tool/summarize@1.0.0": "0",
+    "rtt://agent/api/search@1.0.0": "1",
+    "rtt://mcp/claude/tool/search@1.0.0": "1"
+  }
+}
