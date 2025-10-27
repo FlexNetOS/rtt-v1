@@ -1,0 +1,73 @@
+{
+  "type": "object",
+  "required": [
+    "symbol"
+  ],
+  "properties": {
+    "symbol": {
+      "type": "object",
+      "required": [
+        "saddr",
+        "type",
+        "direction",
+        "capabilities",
+        "qos"
+      ],
+      "properties": {
+        "saddr": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "api",
+            "hook",
+            "plugin",
+            "extension",
+            "stub",
+            "flag",
+            "tag",
+            "queue",
+            "bus",
+            "file",
+            "proc",
+            "service",
+            "stream"
+          ]
+        },
+        "direction": {
+          "type": "string",
+          "enum": [
+            "provider",
+            "consumer",
+            "both"
+          ]
+        },
+        "capabilities": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "inputs": {
+          "type": "array"
+        },
+        "outputs": {
+          "type": "array"
+        },
+        "qos": {
+          "type": "object"
+        },
+        "version_set": {
+          "type": "string"
+        },
+        "auth": {
+          "type": "object"
+        },
+        "tags": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}

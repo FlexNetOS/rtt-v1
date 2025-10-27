@@ -1,0 +1,31 @@
+{
+  "$schema": "https://rtt/spec/v1",
+  "symbol": {
+    "saddr": "rtt://ui/hook/refresh@0.1.0",
+    "type": "hook",
+    "direction": "consumer",
+    "capabilities": [
+      "push"
+    ],
+    "inputs": [
+      {
+        "name": "refresh",
+        "schema": "json://ui.refresh"
+      }
+    ],
+    "outputs": [],
+    "qos": {
+      "latency_budget_ms": 5,
+      "throughput_qps": 1000
+    },
+    "version_set": ">=0.1 <1.0",
+    "auth": {
+      "mode": "none",
+      "scopes": []
+    },
+    "tags": {
+      "lang": "typescript",
+      "component": "ui"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://rtt/spec/v1",
+  "symbol": {
+    "saddr": "rtt://idp/api/auth@2.0.0",
+    "type": "api",
+    "direction": "provider",
+    "capabilities": [
+      "request",
+      "response"
+    ],
+    "inputs": [
+      {
+        "name": "auth_request",
+        "schema": "json://idp.auth.request"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "auth_response",
+        "schema": "json://idp.auth.response"
+      }
+    ],
+    "qos": {
+      "latency_budget_ms": 2,
+      "throughput_qps": 3000
+    },
+    "version_set": ">=2.0 <3.0",
+    "auth": {
+      "mode": "mtls",
+      "scopes": [
+        "auth.exchange"
+      ]
+    },
+    "tags": {
+      "lang": "rust",
+      "component": "idp"
+    }
+  }
+}

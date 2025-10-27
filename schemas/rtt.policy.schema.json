@@ -1,0 +1,17 @@
+{
+  "type": "object",
+  "properties": {
+    "allow": {
+      "type": "array"
+    },
+    "pin": {
+      "type": "array"
+    },
+    "qos": {
+      "type": "array"
+    },
+    "failover": {
+      "type": "array"
+    }
+  }
+}

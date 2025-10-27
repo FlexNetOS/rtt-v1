@@ -1,0 +1,43 @@
+{
+  "allow": [
+    {
+      "from": "rtt://*/api/*",
+      "to": "rtt://*/api/*",
+      "scopes": [
+        "*"
+      ]
+    },
+    {
+      "from": "rtt://*/hook/*",
+      "to": "rtt://*/api/*",
+      "scopes": [
+        "*"
+      ]
+    },
+    {
+      "from": "rtt://*/bus/*",
+      "to": "rtt://*/extension/*",
+      "scopes": [
+        "*"
+      ]
+    }
+  ],
+  "pin": [
+    {
+      "route": "rtt://core/api/auth -> rtt://idp/api/auth@2.0.0"
+    }
+  ],
+  "qos": [
+    {
+      "match": "rtt://*/stream/*",
+      "latency_ms": 1,
+      "prio": 0
+    }
+  ],
+  "failover": [
+    {
+      "route": "rtt://core/bus/events -> [rtt://obs/extension/logger#ndjson, rtt://obs/extension/logger#json]",
+      "health": "p95<5ms,err<0.1%"
+    }
+  ]
+}

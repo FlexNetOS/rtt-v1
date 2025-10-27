@@ -1,0 +1,34 @@
+{
+  "$schema": "https://rtt/spec/v1",
+  "symbol": {
+    "saddr": "rtt://obs/extension/logger@1.3.0#ndjson",
+    "type": "extension",
+    "direction": "provider",
+    "capabilities": [
+      "append",
+      "stream"
+    ],
+    "inputs": [
+      {
+        "name": "event",
+        "schema": "json://obs.event"
+      }
+    ],
+    "outputs": [],
+    "qos": {
+      "latency_budget_ms": 3,
+      "throughput_qps": 20000
+    },
+    "version_set": ">=1.3 <2.0",
+    "auth": {
+      "mode": "token",
+      "scopes": [
+        "obs.write"
+      ]
+    },
+    "tags": {
+      "format": "ndjson",
+      "lang": "go"
+    }
+  }
+}

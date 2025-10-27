@@ -1,0 +1,16 @@
+{
+  "routes": [
+    {
+      "from": "rtt://ui/hook/refresh",
+      "to": "rtt://core/api/metrics"
+    },
+    {
+      "from": "rtt://core/bus/events",
+      "to": "rtt://obs/extension/logger#ndjson"
+    },
+    {
+      "from": "rtt://core/api/auth",
+      "to": "rtt://idp/api/auth"
+    }
+  ]
+}

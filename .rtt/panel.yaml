@@ -1,0 +1,16 @@
+api:
+  listen:
+    unix: "./.rtt/sockets/panel.sock"
+    npipe: "\\\\.\\pipe\\rtt-panel"
+scan:
+  roots: ["./", "./services", "./packages"]
+  ignore: [".git", "node_modules", "target", "venv", "dist", ".pytest_cache"]
+routing:
+  prefer: ["shm","uds","tcp"]
+  rewire_atomic: true
+security:
+  strict_manifests: true
+  allow_unsigned: ["dev/*"]
+health:
+  heartbeat_ms: 250
+  trip_threshold: { errors: 5, window_ms: 5000 }

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://rtt/spec/v1",
+  "symbol": {
+    "saddr": "rtt://core/bus/events@1.1.0",
+    "type": "bus",
+    "direction": "provider",
+    "capabilities": [
+      "pub",
+      "sub",
+      "stream"
+    ],
+    "inputs": [
+      {
+        "name": "topic",
+        "schema": "json://string"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "event",
+        "schema": "json://obs.event"
+      }
+    ],
+    "qos": {
+      "latency_budget_ms": 2,
+      "throughput_qps": 50000
+    },
+    "version_set": ">=1.1 <2.0",
+    "auth": {
+      "mode": "caps",
+      "scopes": [
+        "bus.publish",
+        "bus.subscribe"
+      ]
+    },
+    "tags": {
+      "impl": "shm+uds",
+      "lang": "rust"
+    }
+  }
+}
