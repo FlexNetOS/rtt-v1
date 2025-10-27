@@ -1,0 +1,1 @@
+{"$schema":"https://rtt/agent-manifest/v1","caps":["lint","diff","apply"],"desc":"Propose diffs for code issues.","id":"code_fix","io":{"input":"json.patch","output":"json.patch"},"name":"CodeFix","qos":{"latency_budget_ms":800,"throughput_qps":10},"rtt_saddr":"rtt://agent/api/codefix@1.0.0","version":"1.0.0"}

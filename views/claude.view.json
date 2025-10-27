@@ -1,0 +1,32 @@
+{
+  "provider": "claude",
+  "mount": "providers/claude/.claude/agents",
+  "entries": [
+    {
+      "id": "summarize@1.0.0",
+      "overlays": [
+        "provider:claude",
+        "env:prod"
+      ]
+    },
+    {
+      "id": "search@1.0.0",
+      "overlays": [
+        "provider:claude",
+        "env:prod"
+      ]
+    },
+    {
+      "id": "code_fix@1.0.0",
+      "overlays": [
+        "provider:claude",
+        "env:prod"
+      ]
+    }
+  ],
+  "sign": {
+    "alg": "ed25519",
+    "key_id": "dev-ed25519",
+    "sig": "DEMO_SIGNATURE"
+  }
+}

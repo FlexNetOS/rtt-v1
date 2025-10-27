@@ -1,0 +1,20 @@
+{
+  "$schema": "https://rtt/agent-manifest/v1",
+  "id": "search",
+  "version": "1.0.0",
+  "name": "Search",
+  "desc": "Retrieve relevant passages or facts from a corpus.",
+  "io": {
+    "input": "text",
+    "output": "json"
+  },
+  "caps": [
+    "hybrid",
+    "rerank"
+  ],
+  "rtt_saddr": "rtt://agent/api/search@1.0.0",
+  "qos": {
+    "latency_budget_ms": 400,
+    "throughput_qps": 20
+  }
+}

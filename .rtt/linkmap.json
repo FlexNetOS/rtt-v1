@@ -1,0 +1,7 @@
+{
+  "claude": {
+    "summarize@1.0.0": "providers/claude/.claude/agents/summarize_1.0.0.agent.json",
+    "search@1.0.0": "providers/claude/.claude/agents/search_1.0.0.agent.json",
+    "code_fix@1.0.0": "providers/claude/.claude/agents/code_fix_1.0.0.agent.json"
+  }
+}

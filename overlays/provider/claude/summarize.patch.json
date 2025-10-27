@@ -1,0 +1,5 @@
+{
+  "qos": {
+    "latency_budget_ms": 150
+  }
+}
